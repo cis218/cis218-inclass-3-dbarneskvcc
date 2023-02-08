@@ -10,8 +10,11 @@ class Post(models.Model):
     author = models.ForeignKey(
         "auth.User",
         on_delete=models.CASCADE,
+        related_name="posts",
     )
     body = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         """String method"""

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="post-entry">
+    <h2>{{ post.title }}</h2>
+    <p>
+      {{ post.body }}
+      <br>
+      Created At: {{ post.created }}
+      Written By: {{ post.author }}
+    </p>
+  </div>
+
+  <h1>See other posts from this Author</h1>
+  {% for post in post.author.posts.all %}
+    <div class="post-entry">
+      <h2>
+        <a href="{% url 'post_detail' post.pk %}">
+          {{ post.title }}
+        </a>
+      </h2>
+      <p>{{ post.body }}</p>
+    </div>
+  {% endfor %}
+
+{% endblock content %}
