@@ -11,6 +11,8 @@
     </p>
   </div>
 
+  <a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a>
+
   <h1>See other posts from this Author</h1>
   {% for post in post.author.posts.all %}
     <div class="post-entry">
