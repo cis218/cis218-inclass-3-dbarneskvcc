@@ -1,5 +1,10 @@
+from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import (
+    CreateView,
+    UpdateView,
+    DeleteView,
+)
 
 from .models import Post
 
@@ -26,7 +31,7 @@ class BlogCreateView(CreateView):
     fields = ["title", "author", "body"]
     # Can set this if you wanted one form to redirect
     # somewhere other than the get_absolute_url method
-    # success_url = "/"
+    # success_url = reverse_lazy("home")
 
 
 class BlogUpdateView(UpdateView):
@@ -35,3 +40,11 @@ class BlogUpdateView(UpdateView):
     model = Post
     template_name = "post_edit.html"
     fields = ["title", "body"]
+
+
+class BlogDeleteView(DeleteView):
+    """Blog Delete View"""
+
+    model = Post
+    template_name = "post_delete.html"
+    success_url = reverse_lazy("home")

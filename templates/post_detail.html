@@ -11,7 +11,12 @@
     </p>
   </div>
 
-  <a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a>
+  <p>
+    <a href="{% url 'post_edit' post.pk %}">+ Edit Blog Post</a>
+  </p>
+  <p>
+    <a href="{% url 'post_delete' post.pk %}">- Delete Blog Post</a>
+  </p>
 
   <h1>See other posts from this Author</h1>
   {% for post in post.author.posts.all %}
