@@ -11,6 +11,7 @@ class Post(models.Model):
         "auth.User",
         on_delete=models.CASCADE,
         related_name="posts",
+        # help_text="The person that wrote the post"
     )
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
